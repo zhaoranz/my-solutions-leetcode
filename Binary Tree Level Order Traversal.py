@@ -23,4 +23,19 @@ class Solution:
                     queue.append(cur_root.right)
             res.append(tmp)
         return res
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root:
+            return []
+        res =[]
+        def dfs(idx,r):
+            if len(res) < idx:
+                res.append([])
+            res[idx-1].append(r.val)
+            if r.left:
+                dfs(idx+1, r.left)
+            if r.right:
+                dfs(idx+1, r.right)
+        dfs(1,root)
+        return res
         
