@@ -38,4 +38,19 @@ class Solution:
                 dfs(idx+1, r.right)
         dfs(1,root)
         return res
-        
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root:return []
+        di=defaultdict(list)
+        def solve(root,level,di):
+            if not root:return 
+            di[level].append(root.val)
+            if root.left:solve(root.left,level+1,di)
+            if root.right:solve(root.right,level+1,di)
+        solve(root,0,di)
+        lis=list(di.keys())
+        lis.sort()
+        ans=[]
+        for i in lis:
+            ans.append(di[i])
+        return ans
