@@ -16,4 +16,18 @@ class Solution:
             res.add(root.val)
             return dfs(root.left) or dfs(root.right)
         return dfs(root)
-        
+class Solution:
+    def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
+        q=[root]
+        s=set()
+        while q:
+            tmp= q.pop(0)
+            if tmp.val in s:
+                return True
+            else:
+                s.add(k-tmp.val)
+            if tmp.left:
+                q.append(tmp.left)
+            if tmp.right:
+                q.append(tmp.right)
+        return False       
