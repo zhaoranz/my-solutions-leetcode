@@ -1,0 +1,12 @@
+class Solution:
+    #balloon
+    def maxNumberOfBalloons(self, text: str) -> int:
+        d={'b':0,'a':0,'l':0,'o':0,'n':0}
+        for c in text:
+            if c in d:
+                d[c]+=1 if c in ('l','o') else 2
+        return min(d.values())>>1
+        
+#Solution2
+d=collections.Counter(text)
+return  min(d['b'],d['a'],d['l']>>1,d['o']>>1,d['n'])
