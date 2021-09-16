@@ -1,4 +1,14 @@
 class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        if k > len(nums) - 1:
+            nums[:] = nums[-( k % len(nums) ):] + nums[:-(k % len(nums) )]
+        else:
+            nums[:] = nums[-k:] + nums[:-k]
+            
+class Solution:
     def rotate(self, A: List[int], k: int) -> None:
         def reverse(i, j):
             while i < j:
