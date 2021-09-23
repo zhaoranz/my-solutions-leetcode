@@ -21,4 +21,24 @@ class Solution:
         
                 
         return dist
-        
+#BFS
+class Solution:
+    def updateMatrix(self, matrix: List[List[int]]) -> List[List[int]]:
+        m, n=len(matrix), len(matrix[0])
+        dirs=[(0,-1),(0,1),(1,0),(-1,0)]
+        q=[]
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j]==0:
+                    q.append((i,j))
+                else:
+                    matrix[i][j]=math.inf
+        while q:
+            x,y=q.pop(0)
+            for direct in dirs:
+                X,Y=x+direct[0], y+direct[1]
+                if (X<0 or X>=m or Y<0 or Y>=n or matrix[X][Y]<=matrix[x][y]):
+                    continue
+                matrix[X][Y] = matrix[x][y]+1
+                q.append((X,Y))
+        return matrix
